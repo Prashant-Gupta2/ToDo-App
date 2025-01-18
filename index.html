@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <link rel="stylesheet" href="to-do-list.css">
+          <script type="text/javascript" src="to-do_list.js"> </script> 
+          <script>
+            
+ function createList()
+ {
+       if(document.getElementById("txtinput").value === '')
+        {
+          alert("please write something!"); 
+        }
+       else{
+        let list = document.createElement("li");
+        list.innerHTML=document.getElementById("txtinput").value;
+        document.getElementById("lbllist").appendChild(list);
+        let span= document.createElement("span");
+         span.addEventListener("click",()=>{
+          document.getElementById("lbllist").removeChild(list);
+         })
+        span.innerHTML="\u00d7";
+        list.appendChild(span);
+        document.getElementById("txtinput").value="";
+       }
+ }      
+          </script>
+          <style>
+            *{
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  box-sizing: border-box;        
+}
+.container{
+   width: 100%;
+   min-height: 100vh;  
+   background: linear-gradient(to right,#153677,#4e085f); 
+}
+.to-do-app{
+   max-width: 520px;
+   width: 100%;
+   background: #fff;
+   margin: 0px auto 70px;
+   padding: 40px;  
+   border-radius: 10px;     
+}
+h2 img{
+width: 60px;
+margin-left: 10px;
+}
+.row{
+   background-color:lightblue;
+   border-radius: 20px;
+   display: flex;
+   justify-content: space-between; 
+   align-items: center;
+   padding-left: 20px;     
+}
+.row input{
+  padding: 14px;
+  border-radius: 35px;
+   flex: 1;
+   border: none;
+   outline: none;
+   background: transparent;
+}
+.row button{
+  width: 100px;
+  border-radius: 20px;
+  padding: 14px;
+  font-size: 18px;
+  background-color:cornflowerblue;
+  border:none;
+  color: #fff;
+  cursor: pointer;
+}
+ul li{
+  list-style: none;
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 18px;
+  padding: 10px 8px 12px 40px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+ul li::before{
+  content: '';
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-image: url(../public/images/checked.png);
+  position: absolute;
+  background-size: cover;
+  left: 10px;
+  top: 8px;
+}
+ul li.list{
+  text-decoration: line-through;
+
+}
+ul li span{
+  position: absolute;
+  top: 5px;
+  right:0;
+  font-size: 18px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+}
+ul li span:hover{
+  background-color: cornflowerblue;
+}
+
+          </style>
+</head>
+<body>      
+<div class="container">
+  <div class="to-do-app">
+     <h2>To-Do List <img src="../public/images/to-do-img.jpeg" alt="penfill"></h2>
+     <div class="row">
+          <input type="text" name="list" id="txtinput" placeholder="create a new list">
+          <button onclick="createList()">Add</button>
+    </div>
+    <ul id="lbllist">
+         
+    </ul>
+  </div>
+    
+</div>  
+          
+</body>
+</html>
